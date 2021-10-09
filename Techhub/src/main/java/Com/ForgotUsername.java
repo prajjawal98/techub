@@ -22,12 +22,9 @@ public class ForgotUsername {
         List<SheetColumnHeader> sheetColumnHeaders = fileUtil.readFile();
         return sheetColumnHeaders.toArray();
     }
-
     @Test(dataProvider = "data-provider")
     void test(SheetColumnHeader sheetColumnHeader) throws Exception {
         boolean testPassed = false;
-
-
         DriverUtility driverUtility = DriverUtility.getInstance();
         testPassed = driverUtility.performTest(sheetColumnHeader);
         driverUtility.shutdownDriver();
@@ -44,7 +41,7 @@ public class ForgotUsername {
 
     @AfterMethod
     void tearDown() {
-
+        driver.close();
     }
 
 }
